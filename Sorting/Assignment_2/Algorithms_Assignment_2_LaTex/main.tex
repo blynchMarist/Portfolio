@@ -1,0 +1,201 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CMPT 435
+% Fall 2020
+% Assignment Two
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from: http://www.LaTeXTemplates.com
+% Original author: % Frits Wenneker (http://www.howtotex.com)
+% License: CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Modified by Alan G. Labouseur  - alan@labouseur.com
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%-------------------------------------------------------------------------
+
+\documentclass[letterpaper, 10pt,DIV=13]{scrartcl} 
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm,xfrac} % Math packages
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage[lined,linesnumbered,commentsnumbered]{algorithm2e}
+\usepackage{listings}
+\usepackage{parskip}
+\usepackage{lastpage}
+\allsectionsfont{\normalfont\scshape} % Make all section titles in default font and small caps.
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{page \thepage\ of \pageref{LastPage}} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\setlength\parindent{0pt} % Removes all indentation from paragraphs.
+\binoppenalty=3000
+\relpenalty=3000
+
+%-------------------------------------------------------------------------
+%	TITLE SECTION
+%-------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+   \normalfont \normalsize 
+   \textsc{CMPT 435 - Fall 2020 - Dr. Labouseur} \\[10pt] % Header stuff.
+   \horrule{0.5pt} \\[0.25cm] 	% Top horizontal rule
+   \huge Assignment Two  \\     % Assignment title
+   \horrule{0.5pt} \\[0.25cm] 	% Bottom horizontal rule
+}
+
+\author{Brian Lynch \\ \normalsize brian.lynch2@marist.edu}
+
+\date{\normalsize\today} % Today's date.
+
+\begin{document}
+\maketitle % Print the title
+
+
+%-------------------------------------------------------------------------
+% Selection
+%-------------------------------------------------------------------------
+
+\section{Selection Sort}
+
+\subsection{Imports and Variables}
+The Selection class imports the ArrayList class from the \textsc{java.util} package. This is used to store and sort the values from $allMagicItems$. The field variable, Integer $comparisons$, will count how many value comparisons are required to sort the list.
+
+\subsection{Sort}
+The \textsc{sort(ArrayList<String> allMagicItems)} method functions in a manner that requires two loop functions. The first loop on [Line 6] incrementally ascends through the $allMagicItems$ list. On [Line 9 - Line 13], the remaining values in the list (any value including or after $index$) are compared to find the smallest value. The variable $swapIndex$ is assigned to hold this value. On [Line 8], $swapIndex$ was preassigned to the value of $index$, to account for the cases that $index$ holds the smallest value out of the remainder of the list. [On Line 17 - Line 19], this smallest value is swapped with $index$.
+
+
+%-------------------------------------------------------------------------
+% Insertion
+%-------------------------------------------------------------------------
+
+\section{Insertion Sort}
+
+\subsection{Imports and Variables}
+The Selection class imports the ArrayList class from the \textsc{java.util} package. This is used to store and sort the values from $allMagicItems$. The field variable, Integer $comparisons$, will count how many value comparisons are required to sort the list.
+
+\subsection{Sort}
+The \textsc{sort(ArrayList<String> allMagicItems)} method, similar to Selection Sort, functions in a manner that requires two loop functions. The first loop on [Line 7] incrementally ascends through the $allMagicItems$ list. The nested loop on [Line 8], starts at the index from the previous loop, and incrementally descends through the $allMagicItems$ list. On [Line 11], if the value of the index of the descending loop, represented by the value at $swapIndex$, is less than the preceding value in the list, the two values will be swapped on [Line 13 - Line 15]. If the value is not less than its predecessor, the descending loop will break [Line 17] and the ascending loop will increment to the next value in the list. 
+
+
+%-------------------------------------------------------------------------
+% Merge
+%-------------------------------------------------------------------------
+
+\section{Merge Sort}
+
+\subsection{Imports and Variables}
+The Selection class imports the ArrayList class from the \textsc{java.util} package. This is used to store and sort the values from $allMagicItems$. The field variable, Integer $comparisons$, will count how many value comparisons are required to sort the list.
+
+\subsection{Sort}
+The \textsc{sort(ArrayList<String> allMagicItems)} method sorts, in a generalized sense, by recursively dividing the list in half until each value is in its own unique list. Then, the values will merge back together in ascending order from lowest to highest value. The method starts off with a condition that tests if the list still needs to be divided, being greater than size one [Line 6]. On [Line 8 - Line 14], the list $allMagicItems$ is divided in half, and the bottom and top halves recurse separately. After the lists can no longer be divided, the rest of the code, starting on [Line 17], will execute. On [Line 17 - Line 38], two lists are compared, and are sorting in ascending order. On [Line 21 - Line 29], the if statement is executed if the lists $bottomList$ and $topList$ both still have values to be placed. On [Line 24 - Line 29], the lesser value between the two lists replaces the value  at $index$ in the list $allMagicItems$. On [Line 31 - Line 38], if any values in either the $bottomList$ or $topList$ remain, but the other list is completed, the remaining values will be dumped into $allMagicItems$.
+
+
+%-------------------------------------------------------------------------
+% Quick
+%-------------------------------------------------------------------------
+
+\section{Quick Sort}
+
+\subsection{Imports and Variables}
+The Selection class imports the ArrayList and Random classes from the \textsc{java.util} package. The ArrayList class is used to store and sort the values from $allMagicItems$. The Random class to used to find a random value from $allMagicItems$, which will be used as the "pivot" value. The field variable, Integer $comparisons$, will count how many value comparisons are required to sort the list.
+
+\subsection{Sort}
+The \textsc{sort(ArrayList<String> allMagicItems)} method begins with a condition that if the list $allMagicItems$ is greater than size one, it will execute. On [Line 10], the \textsc{partition} method is called, and returns the index of the "pivot" value. The "pivot" value is used to divide and sort the list. On [Line 13 - Line 16], the list will be divided as values less than the "pivot" value are stored in $bottomList$, and values greater than the "pivot" value are stored in $topList$. These two lists are then recursed separately. When the compiler reaches [Line 19], which is the merge phase, $allMagicItems$ will have been completely divided and in already in ascending order. On [Line 19 - Line 27], $allMagicItems$ is reformed by replacing its values with $bottomList$, then the "pivot" value, and then $topList$.
+
+\subsection{Partition}
+The purpose of the \textsc{partition(ArrayList<String> allMagicItems)} method is to order the list around the "pivot" value. On [Line 34 - Line 36], a random value is selected from $allMagicItems$ and is assigned to $pivot$. On [Line 39 - Line 40], the $pivot$ value is swapped with the last value in the list. This swap will assist greatly in functionality and simplicity during the comparison phase. On [Line 43 - Line 50], the values in $allMagicItems$ are compared to $pivot$. If the value is less than $pivot$, then the value is swapped with the value at $index$, which ascends from the beginning of the list. After all values less than $pivot$ have been placed, $pivot$ is swapped with the value at $index$, which is the value proceeding the most recently placed value. At this time, $allMagicItems$ is arranged with all values at indexes (0...pivot) are less than all values at indexes (pivot+1...allMagicItems.size()-1).
+
+
+%-------------------------------------------------------------------------
+% Main
+%-------------------------------------------------------------------------
+
+\section{Main}
+
+\subsection{Imports and Variable}
+The Main class uses four imports. From the \textsc{java.io} package, the File and FileNotFoundException classes are used. From the \textsc{java.util} package, the Scanner and ArrayList classes are used. 
+
+\subsection{File and Array}
+The \textsc{main} method starts with a try-catch statement that detects if there are any issues reading the "magicitems.txt" file. On [Line 10 - Line 16], the "magicitems.txt" file is retrieved and read. Then, the ArrayList $allMagicItems$ stores each line of the file indvidually. 
+
+\subsection{Sorts}
+On [Line 20 - 44], the different sorts are executed. Each sort call operates in the same manner. To keep the integrity of the control data ($allMagicItems$), an identical copy of the list data was created and used for each of the different sorts. Then, the class objects are created, and their \textsc{sort} methods are called. Each sort, aside from Quick Sort, had consistent results in the number of comparisons. The reason Quick Sort had inconsistent results was due to the fact that the "pivot" value was randomized. A "pivot" value that is closer to the list's median value will be more effective than a value closer to an edge of the list. On [Line 48 - Line 56], to get more accurate results, I found the average number of comparisons using a data set of 100,000 Quick Sort objects. An average and more stable number is found, being 6780 comparisons. 
+
+\vspace{5mm} %5mm vertical space
+Food For Thought: On my Average Quick Sort variation, I tried to take the average of a data set of 1,000,000 Quick objects instead of 100,000. The output ended up being -1810. I got this result multiple times. What is causing this to happen?
+
+
+%-------------------------------------------------------------------------
+% Results
+%-------------------------------------------------------------------------
+
+\section{Results}
+ Selection sort has a best and worst run time of O($n^2$). More accurately, before simplification, the value is $n(n-1)/2$. This accounts for a loop iterating through the list $n$ times, and then iterating again $n-1$ times with a nested loop. When $n$ is substituted with 666, representing the amount of items in "magicitems.txt", the result is 221445, equivalent to the number of comparisons. Insertion sort has a range with its best time being O($n$) and worst time O($n^2$). Insertion sort will near the value O($n$) depending upon how close to sorted the list already is. If the list is already pre-sorted, the loop will iterate through the list $n$ times. The best and worse case for Merge sort is O($n*lg(n)$). This is due to the fact that consistently, Merge sort will always divide the list in half and then recurse each half. Since it's division is consistent, the run times are stable. Before simplification, the value is actually $n*lg(n)+n$. The equation comes from the fact that Merge sort uses recursion. The run time can be found by multiplying $n$ (the size of the array) by $lg(n)+1$ (the levels of recursion). Quick Sort has similar run times to Merge sort, however Quick Sort is less stable. Its best time is O($n*lg(n)$) and its worse time is O($n^2$). This is due to the fact that Quick Sort uses a random "pivot" value from the list. If, for example, on every occasion the "pivot" value was the median value in the current list, the run time would be O($n*lg(n)$). If, for another example, every "pivot" value was an edge value from the list, the run time would be O($n^2$).
+
+\begin{center}
+\begin{tabular} { |c|c|c|c| }
+    
+\hline
+     Sort & Comparisons & Run Time Best & Run Time Worst \\
+\hline
+\hline
+     Selection & 221445 & O($n^2$) & O($n^2$)\\
+\hline
+     Insertion & 114976 & O($n$) & O($n^2$)\\
+\hline
+     Merge     & 5413  & O($n*lg(n)$) & O($n*lg(n)$)\\
+\hline
+     Quick Av. & 6780  & O($n*lg(n)$) & O($n^2$)\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak
+
+
+%-------------------------------------------------------------------------
+% References
+%-------------------------------------------------------------------------
+
+\section{References}
+
+\subsection{Selection Sort}
+\lstset{breaklines=true,numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, basicstyle=\footnotesize\ttfamily}
+\lstinputlisting[frame=single]{Selection.java}
+\pagebreak
+
+\subsection{Insertion Sort}
+\lstset{breaklines=true,numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, basicstyle=\footnotesize\ttfamily}
+\lstinputlisting[frame=single]{Insertion.java}
+\pagebreak
+
+\subsection{Merge Sort}
+\lstset{breaklines=true,numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, basicstyle=\footnotesize\ttfamily}
+\lstinputlisting[frame=single]{Merge.java},
+\pagebreak
+
+\subsection{Quick Sort}
+\lstset{breaklines=true,numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, basicstyle=\footnotesize\ttfamily}
+\lstinputlisting[frame=single]{Quick.java}
+\pagebreak
+
+\subsection{Main}
+\lstset{breaklines=true,numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, basicstyle=\footnotesize\ttfamily}
+\lstinputlisting[frame=single]{Main.java}
+
+\end{document}
